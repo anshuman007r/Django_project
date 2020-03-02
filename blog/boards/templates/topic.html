@@ -1,0 +1,57 @@
+{% load static %}
+<html>
+        <head>
+                <title>Blog</title>
+                <link rel="stylesheet" href="{%static 'css/home.css' %}">
+        </head>
+        <body>
+		<div class="heading"> <H2>Blog
+                 {% if user.is_authenticated %}
+                      <em style="padding-left:70%">{{ user.username}}</em>
+                      <em class="dropdown">
+                        <span class="dropbtn">▼</span>
+                        <div class="dropdown-content">
+                             <small> <a href="#">My Account</a></small>
+                             <small> <a href="#">Change Password</a></small>
+                             <small> <a href="{% url 'logout' %}">Logout</a></small> 
+                       </div>
+                      </em>
+
+
+
+
+                 {% else %}
+                      <a  style="padding-left:76%;" href="{% url 'signup' %}">SignUp</a><a style="padding-left:50px;" href="{% url 'login' %}">Login</a>
+                 {%endif%}
+                 </H2>
+                 </div>
+
+                <div class="container">
+                        <section><a href="{% url 'home' %}">Boards</a>/{{board.name}}</section>
+                        
+                </div>
+                <div class="ancor">
+                <H3><a class="link" href="{% url 'new_topic' board.pk%}">New Topic</a></H3>
+                </div>
+                <div class="table2">
+                <table>
+                  <tr>
+			  <th>Topic</th>
+			  <th>Starter</th>
+                          <th>Replies</th>
+                          <th>Views</th>
+                          <th>Last_updated</th>
+		  </tr>
+		  {% for topic in board.topic.all %}
+		     <tr>
+			     <td><a href="{% url 'topic_post' topic.boards.pk topic.pk%}">{{topic.subject}}</td>
+                             <td>{{topic.starter}}</td>
+                             <td>0</td>
+                             <td>0</td>
+                             <td>{{topic.last_updated}}</td>
+		     </tr>
+		  {% endfor %}
+	        </table>
+                </div>
+        </body> 
+</html>              

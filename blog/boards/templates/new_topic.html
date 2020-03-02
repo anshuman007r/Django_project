@@ -1,0 +1,52 @@
+{% load static %}
+{% load widget_tweaks %}
+<html>
+        <head>
+                <title>Blog</title>
+                <link rel="stylesheet" href="{%static 'css/home.css' %}">
+        </head>
+        <body>
+		<div class="heading"> <H2>Blog
+                 {% if user.is_authenticated %}
+                      <em style="padding-left:70%">{{ user.username}}</em>
+                      <em class="dropdown">
+                        <span class="dropbtn">▼</span>
+                        <div class="dropdown-content">
+                             <small> <a href="#">My Account</a></small>
+                             <small> <a href="#">Change Password</a></small>
+                             <small> <a href="{% url 'logout' %}">Logout</a></small> 
+                       </div>
+                      </em>
+
+
+
+
+                 {% else %}
+                      <a  style="padding-left:76%;" href="{% url 'signup' %}">SignUp</a><a style="padding-left:50px;" href="{% url 'login' %}">Login</a>
+                 {%endif%}
+                 </H2>
+                 </div>
+                <div class="container">
+			<section><a href="{% url 'home' %}">Boards</a>/<a href="{% url 'board_topic' board.pk%}">{{board.name}}</a>/New_topic</section>
+                </div>
+                <br><br><br><br>
+                <form method="post" style="padding-left:15%; padding-right:15%">
+                {% csrf_token %}
+                {% for field in form %}
+                   {{ field.label_tag}}
+                   {% render_field field class="inline"%}
+                   {% if field.help_text %}
+                      <small>{{ field.help_text}}</small>
+                   {% endif %}
+                   <br><br>
+                {%endfor%}
+               
+
+                <div class="flow-button"> 
+                <button type="submit" style="color:white; background-color:blue">Post</button>
+                </div>
+                </form>
+                
+        </body>
+</html>
+

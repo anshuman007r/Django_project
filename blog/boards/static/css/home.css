@@ -1,0 +1,132 @@
+.heading
+{
+	background-color:black;
+	color:white;
+	padding-left:2px;
+}
+td,th
+{       
+        font-size:20px;
+	border-bottom:1px solid #ddd;
+	padding-left:9px;
+}
+.table
+{
+        padding-left:32%;
+        padding-top:20px;
+        
+}
+.table2
+{
+        padding-left:20%;
+        padding-top:100px;
+
+}
+small
+{
+        color:grey;
+        font-size:12px;
+}
+a
+{
+        color:#0000EF;
+}
+.container
+{
+        padding-top:20px;
+        padding-left:2%;
+        padding-right:2%;
+        font-size:20px;
+}
+section
+{
+        background-color:grey;
+}
+.flow-button
+{
+        padding-left:40%;
+}
+.inline
+{
+        box-sizing:border-box;
+        width:100%;
+}
+.link
+{
+        color:white;
+        background-color:blue;
+
+}
+.ancor
+{
+        padding-top:20px;
+        padding-left:20%;
+}
+
+a
+{
+        text-decoration:none;
+}
+.auth
+{
+        padding-right:20%;
+        padding-left:20%;
+        border:2px solid;
+        background-color:white;
+       
+}
+.box
+{
+        padding-right:30%;
+        padding-left:30%;  
+
+}
+.dropbtn {
+  background-color: #393939;
+  color: white;
+  border: none;
+  font-size:25px
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  background-color:#F9F9F9;
+  padding: 14px 42px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.contain_1
+{
+        padding-right:15%;
+        padding-left:15%;  
+}
+.box_2
+{
+        padding-right:5px;
+        padding-left:5px;
+        border:2px solid;
+        background-color:white;
+}
+
+
+
+

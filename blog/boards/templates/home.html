@@ -1,0 +1,53 @@
+{%load static%}
+<html>
+<head>
+         <meta charset="utf-8">
+	<title>	Blog	</title>
+	<link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+	<body>
+		<div class="heading"> <H2>Blog
+                 {% if user.is_authenticated %}
+                      <em style="padding-left:70%">{{ user.username}}</em>
+                      <em class="dropdown">
+                        <span class="dropbtn">▼</span>
+                        <div class="dropdown-content">
+                             <small> <a href="#">My Account</a></small>
+                             <small> <a href="#">Change Password</a></small>
+                             <small> <a href="{% url 'logout' %}">Logout</a></small> 
+                       </div>
+                      </em>
+
+
+
+
+                 {% else %}
+                      <a  style="padding-left:76%;" href="{% url 'signup' %}">SignUp</a><a style="padding-left:50px;" href="{% url 'login' %}">Login</a>
+                 {%endif%}
+                 </H2>
+                 </div>
+	        <div class="container">
+                        <section>Boards</section
+                </div>
+         <div class="table">
+ 	  <table>
+                  <tr>
+			  <th>Blog</th>
+			  <th>Topic</th>
+                          <th>Post</th>
+                          <th>Last_updated</th>
+		  </tr>
+		  {% for index in board %}
+		     <tr>
+			     <td><a href="{% url 'board_topic' index.pk %}">{{ index.name }}</a><br><small>{{ index.description}}</small</td>
+                             <td>0</td>
+                             <td>0</td>
+                             <td></td>
+		     </tr>
+		  {% endfor %}
+	  </table>
+          <div>
+	</body>
+</html>
+
+

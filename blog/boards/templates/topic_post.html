@@ -1,0 +1,50 @@
+{% load static %}
+<html>
+        <head>
+                <title>Blog</title>
+                <link rel="stylesheet" href="{%static 'css/home.css' %}">
+        </head>
+        <body>
+		<div class="heading"> <H2>Blog
+                 {% if user.is_authenticated %}
+                      <em style="padding-left:70%">{{ user.username}}</em>
+                      <em class="dropdown">
+                        <span class="dropbtn">▼</span>
+                        <div class="dropdown-content">
+                             <small> <a href="#">My Account</a></small>
+                             <small> <a href="#">Change Password</a></small>
+                             <small> <a href="{% url 'logout' %}">Logout</a></small> 
+                       </div>
+                      </em>
+
+
+
+
+                 {% else %}
+                      <a  style="padding-left:76%;" href="{% url 'signup' %}">SignUp</a><a style="padding-left:50px;" href="{% url 'login' %}">Login</a>
+                 {%endif%}
+                 </H2>
+                 </div>
+
+                <div class="container">
+                        <section><a href="{% url 'home' %}">Boards</a>/<a href="{% url 'board_topic' topic.boards.pk%}">{{topic.boards.name}}</a>/{{ topic.subject }}</section>
+                        
+                </div>
+                <br><br><br><br>
+                {% for post in topic.post.all %}
+                <div class="contain_1">
+                      <div class="boX_2">
+                         <b>Post:</h4><i>{{post.message}}</i><span style="padding-left:30%"><b>Last_updated_at:</b><i>{{post.updated_at}}</i></span>
+                         <br><br>
+                         <b>Created by:</b><i> {{post.created_by.username}}</i>
+                         <br>
+                    {%if post.created_by == user %}  
+                      <div class="flow-button"> 
+                         <button type="submit" style="color:white; background-color:blue"><a href="{% url 'edit_post' topic.boards.pk topic.pk %}" style="color:white">Edit</a></button>
+                      </div>
+                    {%endif%}                     
+                      </div>
+                </div>
+               {%endfor%}
+	</body>
+</html>
