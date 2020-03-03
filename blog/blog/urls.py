@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^boards/(?P<pk>\d+)/$',views.board_topic,name='board_topic'),
     url(r'^boards/(?P<pk>\d+)/new/$',views.new_topic,name='new_topic'),
     url(r'^admin/', admin.site.urls),
-    url(r'boards/(?P<pk>\d+)/topic/(?P<topic_pk>\d+)/$',views.topic_post,name='topic_post'),
-    url(r'boards/(?P<pk>\d+)/topic/(?P<topic_pk>\d+)/edit/$',views.edit_post,name='edit_post'),
+    url(r'^boards/(?P<pk>\d+)/topic/(?P<topic_pk>\d+)/$',views.topic_post,name='topic_post'),
+    url(r'^boards/(?P<pk>\d+)/topic/(?P<topic_pk>\d+)/reply/$',views.reply_post,name='reply_post'),
+    url(r'^boards/(?P<pk>\d+)/topic/(?P<topic_pk>\d+)/post/(?P<post_pk>\d+)/$',views.edit_post,name='edit_post'),
 ]

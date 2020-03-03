@@ -26,27 +26,21 @@
                  {%endif%}
                  </H2>
                  </div>
+                
                 <div class="container">
-			<section><a href="{% url 'home' %}">Boards</a>/<a href="{% url 'board_topic' board.pk%}">{{board.name}}</a>/New_topic</section>
+			<section><a href="{% url 'home' %}">Boards</a>/<a href="{% url 'board_topic' topic.boards.pk%}">{{topic.boards.name}}</a>/<a href="{% url 'topic_post' topic.boards.pk topic.pk %}">{{ topic.subject }}</a>/Reply post</section>
+                        
                 </div>
                 <br><br><br><br>
                 <form method="post" style="padding-left:15%; padding-right:15%">
-                {% csrf_token %}
-                {% for field in form %}
-                   {{ field.label_tag}}
-                   {% render_field field class="inline"%}
-                   {% if field.help_text %}
-                      <small>{{ field.help_text}}</small>
-                   {% endif %}
-                   <br><br>
-                {%endfor%}
-               
-
-                <div class="flow-button"> 
-                <button type="submit" style="color:white; background-color:#0000EF">Post</button>
-                </div>
+                 {% csrf_token %}               
+                   {% for field in form %}
+                      {{ field.label_tag }}
+                      {% render_field field class="inline" %}
+                   {%endfor %}
+                   <div style="padding-top:20px" class="flow-button"> 
+                     <button type="submit" style="color:white; background-color:#0000EF">Post</button>
+                   </div>
                 </form>
-                
-        </body>
+	</body>
 </html>
-

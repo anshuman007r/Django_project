@@ -30,17 +30,34 @@
                         <section><a href="{% url 'home' %}">Boards</a>/<a href="{% url 'board_topic' topic.boards.pk%}">{{topic.boards.name}}</a>/{{ topic.subject }}</section>
                         
                 </div>
+                <div style="padding-left:10%;">
+                <a href="{% url 'reply_post' topic.boards.pk topic.pk %}" style="background-color:#0000EF;color:white"> Reply post</a>
+                </div>
                 <br><br><br><br>
                 {% for post in topic.post.all %}
-                <div class="contain_1">
-                      <div class="boX_2">
-                         <b>Post:</h4><i>{{post.message}}</i><span style="padding-left:30%"><b>Last_updated_at:</b><i>{{post.updated_at}}</i></span>
+                   {% if forloop.first %}
+                     <div class="contain_1">
+                     <div class="contain_3">
+                       <b style="padding-left:40%">{{post.topic.subject }}</b>
+                     </div>
+                       <div class="boX_2">
+                          <b>Post:</h4>{{post.message}}<span style="padding-left:30%"><b>Last_updated_at:</b>{{post.updated_at}}</span>
                          <br><br>
                          <b>Created by:</b><i> {{post.created_by.username}}</i>
                          <br>
+                   {% else %}
+                     <div class="contain_2">
+                       <div class="boX_1">
+                          <b>Reply:</h4><i>{{post.message}}</i><span style="padding-left:20%"><b>Last_updated_at:</b><i>{{post.updated_at}}</i></span>
+                         <br><br>
+                         <b>Created by:</b><i> {{post.created_by.username}}</i>
+                         <br> 
+
+                
+                   {% endif %}
                     {%if post.created_by == user %}  
                       <div class="flow-button"> 
-                         <button type="submit" style="color:white; background-color:blue"><a href="{% url 'edit_post' topic.boards.pk topic.pk %}" style="color:white">Edit</a></button>
+                         <button type="submit" style="color:white; background-color:#0000EF"><a href="{% url 'edit_post' post.topic.boards.pk  post.topic.pk post.pk %}" style="color:white">Edit</a></button>
                       </div>
                     {%endif%}                     
                       </div>

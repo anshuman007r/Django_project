@@ -10,12 +10,23 @@ class Board(models.Model):
       description=models.CharField(max_length=40)
       def __str__(self):
           return self.name
+      def get_post_count(self):
+          self.count=0
+          for post in Post.objects.all():
+              if self.pk==post.topic.boards.pk:
+                 self.count+=1
+          return self.count
+      def get_last_update(self):
+          last=Post.objects.get(pk=self.count)
+          self.last=last.updated_at
+          return self.last
 
 class Topic(models.Model):
       subject=models.CharField(max_length=50)
       last_updated=models.DateTimeField(auto_now_add=True)
       boards=models.ForeignKey(Board,on_delete=models.CASCADE,related_name='topic')
       starter=models.ForeignKey(User,on_delete=models.CASCADE,related_name='topic')
+      watch=models.IntegerField(default=0)
       def __str__(self):
           return self.subject
 

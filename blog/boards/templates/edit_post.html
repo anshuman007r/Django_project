@@ -27,22 +27,17 @@
                  </div>
 
                 <div class="container">
-			<section><a href="{% url 'home' %}">Boards</a>/<a href="{% url 'board_topic' topic.boards.pk%}">{{topic.boards.name}}</a>/<a href="{% url 'topic_post' topic.boards.pk topic.pk %}">{{ topic.subject }}</a>/Edit post</section>
+			<section><a href="{% url 'home' %}">Boards</a>/<a href="{% url 'board_topic' post.topic.boards.pk%}">{{post.topic.boards.name}}</a>/<a href="{% url 'topic_post' post.topic.boards.pk post.topic.pk %}">{{ post.topic.subject }}</a>/Edit post</section>
                         
                 </div>
                 <br><br><br><br>
                 <form method="post" style="padding-left:15%; padding-right:15%">
                 {% csrf_token %}
-                subject:<br>
-                <input type="text" class="inline" placeholder="{{ topic.subject }}" name="change_subject">
-                <br><br>
-                messsage:<br>
-                {% for post in topic.post.all %}
-                <textarea rows="4" cols="50" placeholder="{{ post.message }}" class="inline" name="change_message"></textarea>
-                {%endfor%}
+                edit message:<br>
+                <textarea placeholder="{{ post.message }}" name="message" rows="5" class="inline" required="required"></textarea>
                 <br><br>
                 <div class="flow-button"> 
-                <button type="submit" style="color:white; background-color:blue">Save</button>
+                <button type="submit" style="color:white; background-color:#0000EF">Save</button>
                 </div>
                 </form>
 	</body>

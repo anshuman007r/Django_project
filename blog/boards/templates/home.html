@@ -40,9 +40,9 @@
 		  {% for index in board %}
 		     <tr>
 			     <td><a href="{% url 'board_topic' index.pk %}">{{ index.name }}</a><br><small>{{ index.description}}</small</td>
-                             <td>0</td>
-                             <td>0</td>
-                             <td></td>
+                             <td style="padding-left:5%">{{ index.topic.count}}</td>
+                             <td style="padding-left:5%">{{ index.get_post_count}}</td>
+                             <td><small>{{ index.get_last_update }}</small></td>
 		     </tr>
 		  {% endfor %}
 	  </table>
